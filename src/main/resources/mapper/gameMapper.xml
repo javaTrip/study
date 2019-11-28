@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC  
+    "-//mybatis.org//DTD Mapper 3.0//EN"  
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+   
+<mapper namespace="org.ls.mapper.GameMapper">
+
+    <!--条件查询的sql-->
+    <sql id="game_sql">
+        <where>
+            <if test="null!= gameName and ''!=gameName">
+                g.gameName like concat("%",#{gameName},"%")
+            </if>
+            <if test="minDate !=null  and ''!=minDate" >
+                and g.showTime >=#{minDate}
+            </if>
+            <if test="maxDate !=null  and ''!=maxDate">
+                and g.showTime &lt;=#{maxDate}
+            </if>
+        </where>
+    </sql>
+
+
+    <!--增加-->
+    <insert id="addGame" parameterType="org.ls.entity.Game">
+        insert into t_game (gameName,price,login,showTime)values (#{gameName},#{price},#{login},#{showTime})
+    </insert>
+
+    <!--删除-->
+    <delete id="delGame" parameterType="java.lang.Integer">
+         delete from t_game where id=#{id}
+    </delete>
+
+    <!--回显-->
+    <select id="toUpdate" parameterType="java.lang.Integer" resultType="org.ls.entity.Game">
+         select * from t_game where id=#{id};
+    </select>
+
+    <!--修改-->
+    <update id="updateGame" parameterType="org.ls.entity.Game">
+         update t_game set gameName=#{gameName},price=#{price},login=#{login},showTime=#{showTime}  where id=#{id}
+    </update>
+
+    <!--查询总条数-->
+    <select id="queryCount" parameterType="org.ls.entity.Game" resultType="java.lang.Long">
+          select count(*) from t_game g
+        <include refid="game_sql"></include>
+    </select>
+
+    <!--查询game数据-->
+    <select id="queryUserList" parameterType="org.ls.entity.Game" resultType="org.ls.entity.Game">
+           select g.id,g.gameName,g.price,g.login,g.showTime from t_game g
+        <include refid="game_sql"></include>
+        order by g.id desc
+        limit #{start},#{length}
+    </select>
+
+
+    <select id="queryGame" resultType="org.ls.entity.Game">
+        select *from t_game
+    </select>
+
+
+
+</mapper>
