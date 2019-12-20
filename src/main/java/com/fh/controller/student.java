@@ -37,4 +37,9 @@ public class student {
     }
 
 
+    public  String   yuyuyuyuyu(){
+
+        return  "jkjkjkjkjkjkjkjkjkjkjkjkj" +
+                "" ;
+    }
 }
