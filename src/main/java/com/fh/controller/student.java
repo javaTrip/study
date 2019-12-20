@@ -17,4 +17,13 @@ public class student {
     }
 
 
+
+
+    public  String   CC(){
+
+        return  "这到底是什么原因啊" +
+                "" ;
+    }
+
+
 }
