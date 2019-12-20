@@ -19,9 +19,20 @@ public class student {
 
 
 
-    public  String   CC(){
+      public  String   CC(){
 
         return  "这到底是什么原因啊" +
+                "" ;
+    }
+
+
+
+
+
+
+    public  String   vvv(){
+
+        return  "bu zhidao" +
                 "" ;
     }
 
