@@ -61,5 +61,10 @@ public class student {
     }
 
 
+    public  String   uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu(){
+
+        return  "uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu" +
+                "" ;
+    }
 
 }
